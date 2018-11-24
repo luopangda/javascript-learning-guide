@@ -26,4 +26,15 @@ Javascript 学习过程中的一些总结，每篇技术文章中会标明关键
 - 项目实战（三）——教育网站
 
 # 公众号
-![](./asset/image/visteacher.jpg)
+---
+![](https://user-gold-cdn.xitu.io/2018/8/28/16580e5417d2716a?w=258&h=258&f=jpeg&s=27042)
+
+欢迎大家关注微信公众号：** 可视化技术（ visteacher ）**
+
+不仅有前端和可视化，还有算法、源码分析、书籍相送
+
+个人网站：[http://blog.kurryluo.com](http://blog.kurryluo.com)
+
+各个分享平台的 KurryLuo 都是在下。
+
+用心学习，认真生活，努力工作！

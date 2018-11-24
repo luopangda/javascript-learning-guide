@@ -8,7 +8,7 @@ Javascript 学习过程中的一些总结，每篇技术文章中会标明关键
 # 目录
 - Javascript 初阶
   - [Javascript 简介](./sections/Javascript%20初阶/javascript%20简介.md)
-  - 变量及数据类型
+  - [语法、变量、数据类型](./sections/Javascript%20初阶/语法、变量、数据类型.md)
   - 赋值操作和运算
   - 函数
   - 对象

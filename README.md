@@ -13,7 +13,7 @@ Javascript 学习过程中的一些总结，每篇技术文章中会标明关键
   - [语句](./sections/Javascript%20初阶/语句.md)
   - [函数](./sections/Javascript%20初阶/函数.md)
   - [内存问题](./sections/Javascript%20初阶/内存问题.md)
-  - 对象
+  - [引用类型之对象](./sections/Javascript%20初阶/引用类型之%20Object.md)
   - 事件
   - 循环
 - Javascript 高阶

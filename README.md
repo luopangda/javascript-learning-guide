@@ -8,10 +8,12 @@ Javascript 学习过程中的一些总结，每篇技术文章中会标明关键
 # 目录
 - Javascript 初阶
   - [Javascript 简介](./sections/Javascript%20初阶/javascript%20简介.md)
-  - 变量及数据类型
-  - 赋值操作和运算
-  - 函数
-  - 对象
+  - [语法、变量、数据类型](./sections/Javascript%20初阶/语法、变量、数据类型.md)
+  - [操作符](./sections/Javascript%20初阶/操作符.md)
+  - [语句](./sections/Javascript%20初阶/语句.md)
+  - [函数](./sections/Javascript%20初阶/函数.md)
+  - [内存问题](./sections/Javascript%20初阶/内存问题.md)
+  - [引用类型之对象](./sections/Javascript%20初阶/引用类型之%20Object.md)
   - 事件
   - 循环
 - Javascript 高阶
@@ -26,4 +28,15 @@ Javascript 学习过程中的一些总结，每篇技术文章中会标明关键
 - 项目实战（三）——教育网站
 
 # 公众号
-![](./asset/image/visteacher.jpg)
+---
+![](https://user-gold-cdn.xitu.io/2018/8/28/16580e5417d2716a?w=258&h=258&f=jpeg&s=27042)
+
+欢迎大家关注微信公众号：**可视化技术（ visteacher ）**
+
+不仅有前端和可视化，还有算法、源码分析、书籍相送
+
+个人网站：[http://blog.kurryluo.com](http://blog.kurryluo.com)
+
+各个分享平台的 KurryLuo 都是在下。
+
+用心学习，认真生活，努力工作！

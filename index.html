@@ -7,19 +7,29 @@
 <body>
 <script src="index.js"></script>
 <div id="page">
-    <div class="main">
-        <div class="sub"></div>
+    <div class="aside">12</div>
+    <div class="text">
+        <div class="main">34</div>
     </div>
-    <div class="nav"></div>
 </div>
 <style type="text/css">
-    #page { width: 520px; }
-    .nav  { width: 200px; float: right; }
-    .main { width: 200px; float: left; padding-left: 110px; }
-    .sub  { width: 100px; float: left; margin: 10px 0 10px -100px; }
-    .main { border: 1px solid #000; }
-    .nav, .sub { border: 1px dashed #000; height: 300px; }
-    .sub { height: 280px; }
+    .aside {
+        width: 100px;
+        height: 150px;
+        background: #f66;
+        margin-bottom: 100px;
+    }
+
+    .main {
+        margin-top: 100px;
+        height: 200px;
+        background: #fcc;
+    }
+
+    .text{
+        /*盒子main的外面包一个div，通过改变此div的属性使两个盒子分属于两个不同的BFC，以此来阻止margin重叠*/
+        /*overflow: hidden;*/
+    }
 </style>
 </body>
 </html>

@@ -6,20 +6,32 @@
 </head>
 <body>
 <script src="index.js"></script>
-<div id="page">
-    <div class="main">
-        <div class="sub"></div>
-    </div>
-    <div class="nav"></div>
+<div class="child">
 </div>
+<div class="child2">
+</div>
+<div class="par"></div>
+
 <style type="text/css">
-    #page { width: 520px; }
-    .nav  { width: 200px; float: right; }
-    .main { width: 200px; float: left; padding-left: 110px; }
-    .sub  { width: 100px; float: left; margin: 10px 0 10px -100px; }
-    .main { border: 1px solid #000; }
-    .nav, .sub { border: 1px dashed #000; height: 300px; }
-    .sub { height: 280px; }
+    html, body { height: 100%; width: 100%; margin: 0; padding: 0; }
+    .child {
+        width:100px;
+        background-color: #ff0000;
+        float: left;
+        height: 100px;
+    }
+    .par {
+        height: 480px;
+        overflow: hidden;
+        background-color: #ffff00;
+    }
+    .child2 {
+        width:100px;
+        background-color: #ff0000;
+        float: right;
+        height: 100px;
+    }
+
 </style>
 </body>
 </html>

@@ -49,6 +49,9 @@
 //     }
 // }
 
+// const input = "http://www.nowcoder.com?key=1&key=2&key=3&test=4#hehe";
+// let result = getUrlParam(input);
+// console.log(result);
 
 // 正则表达式
 
@@ -220,4 +223,11 @@ new MyPromise((resolve, reject)=>{
     console.log(3)
 }).then(value=>{
     console.log(value)
-})
+});
+
+
+
+
+
+
+

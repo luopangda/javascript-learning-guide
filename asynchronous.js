@@ -9,19 +9,20 @@ function *foo(x){
 }
 
 let it = foo(5); // foo函数返回的是一个迭代器：
-// console.log(it.next()); // 传参会被忽略，和it.next()一样的作用，“屈服”于第一个yield
+console.log(it.next()); // 传参会被忽略，和it.next()一样的作用，“屈服”于第一个yield
 // 返回的是一个对象：第一个yield后面计算的值，完成状态（未完成，false）。所以返回：{value: 6, done: false}
-// console.log(it.next(10)); // 此时必须传参了，it.next() 不传参返回的是：{value: NaN, done: false}，“屈服”于第二个yield
+console.log(it.next(10)); // 此时必须传参了，it.next() 不传参返回的是：{value: NaN, done: false}，“屈服”于第二个yield
 // 如果传参，那么这个参数就会替换掉上一个 yield 计算得到的结果6，然后参与到乘以2的运算。
 //此时 let y = 2 * 10; 第二个yield计算的结果是 20 / 3，所以返回：{value: 6.666..., done: false}
-// console.log(it.next(13)); // 此时必须传参了，it.next() 不传参返回的是：{value: NaN, done: false}
+console.log(it.next(13)); // 此时必须传参了，it.next() 不传参返回的是：{value: NaN, done: false}
 // 如果传参，那么这个参数就会替换掉上一个 yield 计算得到的结果6.6666，然后参与赋值运算。
 // 此时 let z = 2 * 13; 那么 ，第三个yield计算的结果是 26 / 2，所以返回：{value: 13, done: false}
-// console.log(it.next(14)); // 此时必须传参了，it.next() 不传参返回的是：{value: NaN, done: false}
+console.log(it.next(14)); // 此时必须传参了，it.next() 不传参返回的是：{value: NaN, done: false}
 //如果传参，那么这个参数就会替换掉上一个 yield 计算得到的结果6.6666，然后参与赋值运算。
 // 此时 let k = 14; 那么 z = 26，y = 20, x = 5, 所以返回：{value: 65, done: true}
 
-// 总结：1. 在结束之前，永远返回的都是yield后面的值。第几个next()，就返回第几个 yield 后面的计算结果。
+// 总结：
+// 1. 在结束之前，永远返回的都是yield后面的值。第几个next()，就返回第几个 yield 后面的计算结果。
 // 2. 从第二个next()开始，必须传入参数，替换上一个yield的结果，比如第二个next()的参数替换第一个yield，但是返回的是第二个yield后面的计算值；
 // 第三个next()的参数替换第二个yield的值参与计算，但是返回第三个yield后面的计算值。
 
@@ -38,7 +39,7 @@ let it = foo(5); // foo函数返回的是一个迭代器：
 
 function *fetch(x) {
     let y = yield x+1;
-    yield 2; // y 是 2 的话就可以不用传值，也就是说，后面的 yield 引用了前面的yield计算的时候就需要一个参数（确定值）代替前一个yield计算结果。
+    yield 2; // y 是 2 的话就可以不用传值，也就是说，后面的 yield 引用了前面的yield计算结果的时候就需要一个参数（确定值）代替前一个yield计算结果。
     yield 3;
     return 8
 }

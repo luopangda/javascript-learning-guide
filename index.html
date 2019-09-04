@@ -5,30 +5,32 @@
     <title>Title</title>
 </head>
 <body>
-<script src="guangduyouxian.js"></script>
-<div id="page">
-    <div class="aside">12</div>
-    <div class="text">
-        <div class="main">34</div>
-    </div>
-</div>
+<p>12</p>
+<script>
+
+    document.querySelector('p').setAttribute('style', 'text-align: center')
+
+</script>
 <style type="text/css">
-    .aside {
-        width: 100px;
-        height: 150px;
-        background: #f66;
-        margin-bottom: 100px;
+    html, body { height: 100%; width: 100%; margin: 0; padding: 0; }
+    .child {
+        width:100px;
+        background-color: #ff0000;
+        float: left;
+        height: 100px;
+        word-break: break-all; // 允许在单词内换行
+        /*white-space: normal;*/
     }
-
-    .main {
-        margin-top: 100px;
-        height: 200px;
-        background: #fcc;
+    .par {
+        height: 480px;
+        overflow: hidden;
+        background-color: #ffff00;
     }
-
-    .text{
-        /*盒子main的外面包一个div，通过改变此div的属性使两个盒子分属于两个不同的BFC，以此来阻止margin重叠*/
-        /*overflow: hidden;*/
+    .child2 {
+        width:100px;
+        background-color: #ff0000;
+        float: right;
+        height: 100px;
     }
 </style>
 </body>

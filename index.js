@@ -48,6 +48,7 @@
 //         return quickSort(pre).concat(pivot, quickSort(pro))
 //     }
 // }
+
 // const input = "http://www.nowcoder.com?key=1&key=2&key=3&test=4#hehe";
 // let result = getUrlParam(input);
 // console.log(result);
@@ -59,21 +60,28 @@
 // alert(toRGB("invalid"));          // 输出 invalid
 // alert(toRGB("#G00"));              // 输出 #G00
 
-function toRGB(color) {
-    let regex = /#([0-9a-fA-F]{2})([0-9a-fA-F]{2})([0-9a-fA-F]{2})/g;
-    let matchedChar = [];
-    // console.log(regex.lastIndex);
-    // console.log(regex.global);
-    // console.log(regex.multiline);
-    // console.log(regex.source);
-    while (regex.lastIndex < color.length){
-        let match = regex.exec(color);
-        matchedChar.push(match[0])
-    }
-    // return match ? 'rgb('+ parseInt(match[1],16) + ',' + parseInt(match[2], 16) + ',' +parseInt(match[3],16) + ')': color
-    return matchedChar
-}
-
+// function toRGB(color) {
+//     let regex = /#(?<r>[0-9a-fA-F]{2})(?<g>[0-9a-fA-F]{2})(?<b>[0-9a-fA-F]{2})/g;
+//     let matchedChar = [];
+//     // console.log(regex.lastIndex);
+//     // console.log(regex.global);
+//     // console.log(regex.multiline);
+//     // console.log(regex.source);
+//     // while (regex.lastIndex < color.length){
+//     //     let match = regex.exec(color);
+//     //     matchedChar.push(match[0])
+//     // }
+//     let match = regex.exec(color);
+//     console.log(match);
+//     // 相当于
+//     // let strMethodMatch = color.match(regex);
+//     // console.log(strMethodMatch);
+//     return match ? 'rgb('+ parseInt(match.groups['r'],16) + ',' + parseInt(match.groups['g'], 16) + ',' +parseInt(match.groups['b'],16) + ')': color
+//     // return matchedChar
+// }
+// const input = "#aabbcc#eeff00";
+// let result = toRGB(input);
+// console.log(result);
 
 // 匹配URL字符参数
 
@@ -82,110 +90,145 @@ function toRGB(color) {
 2. 不指定参数名称，返回全部的参数对象 或者 {}
 3. 如果存在多个同名参数，则返回参数数组
 * */
+// http://www.nowcoder.com?key=1&key=2&key=3&test=4#hehe 输出 [1, 2, 3]
 
 // function getUrlParam(sUrl,sKey){
 //     var result = {};
-//     sUrl.replace(/\??(\w+)=(\w+)&?/g,function(a,k,v){
+//     // 用 replace
+//     let newStr = sUrl.replace(/\??(\w+)=(\w+)&?/g,function(a,k,v){
+//         console.log(a,k,v);
+//         // a 是匹配结果；k 是子表达式1的结果， v 是子表达式2的结果
 //         if(result[k] !== void 0){
 //             var t = result[k];
 //             result[k] = [].concat(t,v);
 //         }else{
 //             result[k] = v;
 //         }
+//         return '占位符'
 //     });
+//
+//     console.log(newStr);
+//
+//     // 用 matchAll
+//     // let matches = sUrl.matchAll(/\??(\w+)=(\w+)&?/g);
+//     // console.log(matches);
+//     // for (const match of matches){
+//     //     let key = match[1];
+//     //     let value = match[2];
+//     //     if(result[key] !== void 0){
+//     //         let t = result[key];
+//     //         result[key] = [].concat(t, value)
+//     //     }else {
+//     //         result[key] = value
+//     //     }
+//     // }
 //     if(sKey === void 0){
 //         return result;
 //     }else{
 //         return result[sKey] || '';
 //     }
 // }
+// const input = "http://www.nowcoder.com?key=1&key=2&key=3&test=4#hehe";
+// let result = getUrlParam(input, 'key');
+// console.log(result);
 
-// http://www.nowcoder.com?key=1&key=2&key=3&test=4#hehe 输出 [1, 2, 3]
+// var names = "Harry Trump ;Fred Barney; Helen Rigby ; Bill Abel ;Chris Hand ";
+//
+// console.log(names);
+// // 括号内的含义是匹配一个；但是不要被访问到，这样分割符就不会出现在结果数组内。
+// // | 表示或者匹配一个结束位置，这时为了后面的最后的那个空格，其实没有必要。
+// var re = /\s*(?:;|$)\s*/g;
+//
+// var nameList = names.split(re);
+//
+// console.log(nameList);
+//
+//
+// var myString = "Hello 1 word. Sentence number 2.";
+// var splits = myString.split(/(?:\d)/);
+//
+// console.log(splits);
 
-function getUrlParam(sUrl, sKey) {
-    let results = {};
-    let regExp = /\??(\w+)=(\w+)&?/g;
-    let isMultiParams = false;
-    let multiParamsKey;
-    sUrl.replace(regExp, (a, k, v)=>{
-        if(results[k] !== void 0){
-            let temp = results[k];
-            results[k] = [].concat(temp, v);
-            isMultiParams = true;
-            multiParamsKey = k;
-        }else {
-            results[k] = v;
+// 手写Promise
+
+const PENDING = 'pending';
+const RESOLVED = 'resolved';
+const REJECTED = 'rejected';
+
+function MyPromise(fn){
+   // 内部异步执行，可能会有不同的this
+   const that = this;
+   that.state = PENDING;
+   that.value = null;
+   // 如果还在pending，过后会在这里取出回调函数，改变状态的时候用。
+   that.resolvedCallbacks = [];
+   that.rejectedCallbacks = [];
+
+   function resolve(value) {
+       if(that.state === PENDING){ // 只有在等待中才可以更改状态
+           // 更改函数的内部状态
+           that.state = RESOLVED;
+           // 现在的值是resolve接收的值
+           that.value = value;
+           // 遍历回调函数，传入的参数是resolve接收的值
+           that.resolvedCallbacks.map(cb => cb(that.value))
+       }
+   }
+   function reject(value) {
+        if(that.state === PENDING){
+            // 更改函数的内部状态
+            that.state = REJECTED;
+            // 现在的值是resolve接收的值
+            that.value = value;
+            // 遍历回调函数，传入的参数是resolve接收的值
+            that.rejectedCallbacks.map(cb => cb(that.value))
         }
-    });
-    if(isMultiParams){
-        return results[multiParamsKey]
-    }else {
-        if(sKey === void 0){
-            return results
-        }else {
-            return results[sKey] || ''
-        }
+    }
+
+    // 执行传入的函数，没错，Promise的参数就是一个函数。
+    try{
+       fn(resolve, reject)
+    }catch(e) {
+       reject(e)
     }
 }
 
+//    最后实现比较难的then函数
 
-// 递归
+MyPromise.prototype.then = function(onFullfilled, onRejected){
+    const that = this;
+    // onFullfilled, onRejected 两者必须为函数，先判断一下，不是就替换成函数
+    onFullfilled = typeof onFullfilled === "function" ? onFullfilled : v=>v;
+    onRejected = typeof onRejected === "function" ? onRejected : r=>{throw r};
+    if(that.state === PENDING){
+        that.resolvedCallbacks.push(onFullfilled)
+        that.rejectedCallbacks.push(onRejected)
+    }
 
-function test(str) {
-    let reg = /\[(\d+)\|([A-F]+)\]/g;
-    let newStr = str.replace(reg,(a,num,v)=>{
-        console.log(a,num,v);
-        let temp = '';
-        for(let i = 0; i<parseInt(num); i++){
-            temp += v
-        }
-        return temp
-    });
+    if(that.state === RESOLVED){
+        onFullfilled(that.value)
+    }
 
-    if (newStr.indexOf('[') === -1) {
-        // 基准条件
-        return newStr;
-    }else {
-        // 递归条件，减小问题规模，下一次递归依赖本次替换结果（已经替换n个字符串的新字符串）
-        // 添加返回是因为最后一次调用递归后，
-        // 虽然达到基准条件，被调用的那次函数（第 n 次）有返回值，但是没有返回给第n-1次，外层函数也获取不到返回值。
-        console.log(test(newStr));// 最后一次调用得到最后结果，一定要返回给外层函数！！！
-        return test(newStr);
+    if(that.state === REJECTED){
+        onRejected(that.value)
     }
 }
 
-let input = 'HG[2|AA[1|BC]]FF[2|D]';
-let result = test(input);
-console.log(result);
-// while (input.indexOf('[') !== -1 ){ // 循环条件
-//    input = test(input);  // 循环调用
-// }
+new MyPromise((resolve, reject)=>{
+    console.log(1)
+    // setTimeout(()=>{
+    //
+    // }, 0)
+    resolve(2)
+    console.log(3)
+}).then(value=>{
+    console.log(value)
+});
 
 
-// function test(array) {
-//     let mid = Math.floor(array.length/2);
-//     let theMidValue = array.splice(mid, 1)[0];
-//     let left = [];
-//     let right = [];
-//     array.forEach(item=>{
-//         if(item > theMidValue){
-//             right.push(item)
-//         }else {
-//             left.push(item)
-//         }
-//     });
-//
-//     let newLeft = test(left); // 缩小问题规模
-//     let newRight = test(right); // 缩小问题规模
-//
-//     if(array.length < 2){
-//         // 只有一个元素或者为元素为空都是有序的
-//         // 基准条件
-//         return array
-//     }
-//     return newLeft.concat(theMidValue, newRight)
-// }
-// let input = [1,5,6,7,1];
+
+
+
 
 
 

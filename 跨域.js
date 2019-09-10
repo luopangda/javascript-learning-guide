@@ -1,17 +1,17 @@
 // 利用Script标签实现跨域，JSONP
 
-function jsonp(url, jsonpCallbackName, success) {
+function jsonp(url, jsonpCallback, success) {
     // jsonpCallbackName 绑定到全局，
     let script = document.createElement('script');
     script.url = url;
     script.async = true;
     script.type = 'text/javascript';
-    window[jsonpCallbackName] = function (data) {
+    window[jsonpCallback] = function (data) {
         success && success(data)
     };
     document.body.appendChild(script);
 }
-// 可以避免写很多不同名字的callback，只需要一个callback就可以了。
+// 可以避免写很多callback，只需要一个callback就可以了。每次调用jsonp都会替换callback成success这个函数。
 jsonp('http://', 'callback', (data)=>{
     // 获取成功以后的回调函数
     console.log(data)

@@ -35,27 +35,27 @@ console.log(result);
 
 // 快速排序
 
-// function test(array) {
-//     let mid = Math.floor(array.length/2);
-//     let theMidValue = array.splice(mid, 1)[0];
-//     let left = [];
-//     let right = [];
-//     array.forEach(item=>{
-//         if(item > theMidValue){
-//             right.push(item)
-//         }else {
-//             left.push(item)
-//         }
-//     });
-//
-//     let newLeft = test(left); // 缩小问题规模
-//     let newRight = test(right); // 缩小问题规模
-//
-//     if(array.length < 2){
-//         // 只有一个元素或者为元素为空都是有序的
-//         // 基准条件
-//         return array
-//     }
-//     return newLeft.concat(theMidValue, newRight)
-// }
-// let input = [1,5,6,7,1];
+function test(array) {
+    let mid = Math.floor(array.length/2);
+    let theMidValue = array.splice(mid, 1)[0];
+    let left = [];
+    let right = [];
+    array.forEach(item=>{
+        if(item > theMidValue){
+            right.push(item)
+        }else {
+            left.push(item)
+        }
+    });
+
+    let newLeft = test(left); // 缩小问题规模
+    let newRight = test(right); // 缩小问题规模
+
+    if(array.length < 2){
+        // 只有一个元素或者为元素为空都是有序的
+        // 基准条件
+        return array
+    }
+    return newLeft.concat(theMidValue, newRight)
+}
+let input = [1,5,6,7,1];

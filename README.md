@@ -7,13 +7,13 @@ Javascript 学习过程中的一些总结，每篇技术文章中会标明关键
 
 # 目录
 - Javascript 初阶
-  - [Javascript 简介](./sections/Javascript%20初阶/javascript%20简介.md)
-  - [语法、变量、数据类型](./sections/Javascript%20初阶/语法、变量、数据类型.md)
-  - [操作符](./sections/Javascript%20初阶/操作符.md)
-  - [语句](./sections/Javascript%20初阶/语句.md)
-  - [函数](./sections/Javascript%20初阶/函数.md)
-  - [内存问题](./sections/Javascript%20初阶/内存问题.md)
-  - [引用类型之对象](./sections/Javascript%20初阶/引用类型之%20Object.md)
+  - [Javascript 简介](./基础/Javascript%20初阶/javascript%20简介.md)
+  - [语法、变量、数据类型](./基础/Javascript%20初阶/语法、变量、数据类型.md)
+  - [操作符](./基础/Javascript%20初阶/操作符.md)
+  - [语句](./基础/Javascript%20初阶/语句.md)
+  - [函数](./基础/Javascript%20初阶/函数.md)
+  - [内存问题](./基础/Javascript%20初阶/内存问题.md)
+  - [引用类型之对象](./基础/Javascript%20初阶/引用类型之%20Object.md)
   - 事件
   - 循环
 - Javascript 高阶

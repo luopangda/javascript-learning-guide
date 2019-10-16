@@ -1,7 +1,7 @@
 
 // 手动实现call
 Function.prototype.myCall = function (context) {
-    if(typeof context !== "function"){
+    if(context && typeof context !== "function"){
         throw new TypeError('error');
     }
     context = context || window;
@@ -10,6 +10,18 @@ Function.prototype.myCall = function (context) {
     const result = context.fn(...argues);
     delete context.fn;
     return result;
+};
+
+// 手动实现apply
+
+Function.prototype.myApply = function (context) {
+    if(typeof context !== 'function'){
+        return new TypeError('参数不是函数')
+    }
+
+    context = context || window;
+    context.fn = this;
+
 };
 
 // 手动实现bind：返回一个函数
